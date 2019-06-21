@@ -15,8 +15,8 @@ import java.util.Date;
  */
 public class BaseTest {
 
-	public static final String KONG_ADMIN_URL = "http://test.com:8001";
-	public static final String KONG_API_URL = "https://test.com:8443";
+	public static final String KONG_ADMIN_URL = "http://192.168.22.105:8001";
+	public static final String KONG_API_URL = "https://192.168.22.105:8443";
 
 	protected static KongClient kongClient;
 

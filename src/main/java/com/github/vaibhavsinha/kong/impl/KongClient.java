@@ -46,6 +46,9 @@ public class KongClient {
 
     private AclService aclService;
 
+    private ServiceService serviceService;
+    private RouteService routeService;
+
 
     public KongClient(String adminUrl) {
         this(adminUrl, null, false);
@@ -91,6 +94,11 @@ public class KongClient {
             hmacAuthService = new HmacAuthServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitHmacAuthService.class));
             jwtService = new JwtAuthServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitJwtService.class));
             aclService = new AclServiceImpl(retrofitServiceCreatorForAdminUrl.createRetrofitService(RetrofitAclService.class));
+        }
+
+        {
+            serviceService = retrofitServiceCreatorForAdminUrl.create(ServiceService.class,RetrofitServiceService.class);
+            routeService = retrofitServiceCreatorForAdminUrl.create(RouteService.class,RetrofitRouteService.class);
         }
 
         if(needOAuth2Support) {
